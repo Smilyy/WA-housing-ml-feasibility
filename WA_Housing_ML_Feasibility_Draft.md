@@ -98,55 +98,55 @@ These categories are intended to guide early exploration rather than define a fi
 ### 3.2 Potential Free Data Sources (Indicative)
 The initial analysis assumes reliance on free or publicly available datasets, which may include the following.
 
-Primary transaction and geographic data (WA)
+#### Primary transaction and geographic data (WA)
 
-WA Sales Evidence Data — property transaction records including sale prices and attributes
+WA Sales Evidence Data — property transaction records including sale prices and attributes  
 https://catalogue.data.wa.gov.au/dataset/sales-evidence-data
 
 Note: full access is subject to licensing/fees; sample extracts in formats such as .dat or .xlsx can be used for early exploration.
 
-DataWA / SLIP spatial datasets — boundaries, regions, and geographic reference layers
+DataWA / SLIP spatial datasets — boundaries, regions, and geographic reference layers  
 https://catalogue.data.wa.gov.au/
 
-Socio-economic and macro context
+#### Socio-economic and macro context
 
-ABS Census and housing statistics — income, population, dwelling characteristics
+ABS Census and housing statistics — income, population, dwelling characteristics  
 https://www.abs.gov.au/
 
-Western Australia Regional Price Index (RPI) — region-level cost-of-living comparisons
+Western Australia Regional Price Index (RPI) — region-level cost-of-living comparisons  
 https://catalogue.data.wa.gov.au/dataset/regional-price-index-western-australia
 
 Useful as a regional macro context feature, not as transaction-level input.
-Broader / Comparative Datasets (Benchmarking & Methods)
+#### Broader / Comparative Datasets (Benchmarking & Methods)
 
 The following datasets are not WA-specific and are not intended for direct production use, but are commonly used for benchmarking, validation, or methodological exploration:
 
-UK Property Price Paid Data
-Large, fully open dataset of residential transactions in England and Wales, often used in academic and ML baseline studies.
+UK Property Price Paid Data  
+Large, fully open dataset of residential transactions in England and Wales, often used in academic and ML baseline studies.  
 https://clickhouse.com/docs/getting-started/example-datasets/uk-price-paid
 
-Constraint: geography and market dynamics differ significantly from WA; suitable for method testing only, not model transfer.
+Constraint: Geography and market dynamics differ significantly from WA. Might be suitable for method testing only, not model transfer.
 
-International Residential Property Price Indices (BIS)
-Quarterly price indices across multiple countries.
+International Residential Property Price Indices (BIS)  
+Quarterly price indices across multiple countries.  
 https://data.bis.org/topics/RPP
 
-Constraint: highly aggregated; useful for macro trend comparison or validation, not for property-level prediction.
+Constraint: Highly aggregated. Useful for macro trend comparison or validation, not for property-level prediction.
 
-Multimodal Houses Dataset (images + text)
-Small research dataset (~2k properties) with images and textual metadata.
+Multimodal Houses Dataset (images + text)  
+Small research dataset (~2k properties) with images and textual metadata.  
 https://github.com/emanhamed/Houses-dataset
 
-Constraint: limited scale and not representative of WA; suitable only for experimental exploration of multimodal or deep learning approaches.
-Recommendation:
-For this exploratory phase, priority should be given to WA-specific transaction data (Sales Evidence Data samples) combined with ABS socio-economic context and regional macro indicators. Broader and international datasets are best used for method validation, baseline comparisons, or feasibility assessment, rather than as direct training data.
+Constraint: Limited scale and not representative of WA. Suitable only for experimental exploration of multimodal or deep learning approaches.
+
+Note: For this exploratory phase, priority should be given to WA-specific transaction data (Sales Evidence Data samples) combined with ABS socio-economic context and regional macro indicators. Broader and international datasets are best used for method validation, baseline comparisons, or feasibility assessment, rather than as direct training data.
 Feature inclusion is contingent on data availability, geographic coverage, and data quality, and will be validated during data discovery before any modelling decisions are finalised.
 
 ---
 
 ## 4. Expected Data Characteristics
 
-### 4.1 Data Volume (Order-of-Magnitude)
+### 4.1 Data Volume
 Based on typical availability of publicly accessible residential transaction data in Western Australia, the overall dataset size is currently unknown, as only a sample subset is available at this stage. Actual volume will depend on the temporal window selected and the completeness of accessible sources. Spatial and temporal coverage is expected to be uneven, with metropolitan areas likely to be over-represented relative to regional or remote locations. Transaction density may vary substantially across suburbs and years, and some regions may exhibit sparse or discontinuous records. In addition, certain property types or market segments may be under-represented. As a result, the effective sample size after applying quality, coverage, and consistency constraints may be significantly smaller than the raw record count.
 
 ### 4.2 Data Distribution Considerations
