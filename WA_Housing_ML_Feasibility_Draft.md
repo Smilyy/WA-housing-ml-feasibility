@@ -78,19 +78,19 @@ Across studies and applied systems, feature quality and spatial representation t
 ### 3.1 Core Feature Categories
 Based on prior housing price modelling work, the following high-level feature categories are expected to explain the majority of observed price variation. These categories reflect commonly accepted economic drivers of residential property value and are intended to guide early exploration rather than define a fixed or exhaustive feature set.
 
-*Location features*  
+#### *Location features*  
 Location is typically the single strongest determinant of housing prices. Features such as suburb or postcode identifiers, geographic coordinates, or region-level indicators act as proxies for a wide range of latent factors, including neighbourhood desirability, access to employment, and local demand–supply dynamics.
 
-*Property attributes*  
+#### *Property attributes*  
 Structural characteristics describe the intrinsic qualities of a dwelling and are essential for differentiating prices within the same location. Attributes such as dwelling type, number of bedrooms and bathrooms, land size, internal area, and tenure type directly influence perceived utility and market value.
 
-*Temporal features*  
+#### *Temporal features*  
 Housing prices evolve over time in response to market cycles, policy changes, and macroeconomic conditions. Transaction dates or coarse temporal indicators (e.g. year or quarter) help capture these dynamics and reduce bias arising from pooling transactions across different market phases.
 
-*Socio-economic context*  
+#### *Socio-economic context*  
 Area-level socio-economic indicators provide context for local purchasing power and demand conditions. Features such as income levels, population density, tenure mix, and housing affordability metrics help explain systematic price differences across regions that are not fully captured by property attributes alone.
 
-*Optional amenity indicators*  
+#### *Optional amenity indicators*  
 Where data coverage and quality permit, proximity to amenities such as schools, transport, or services can act as secondary drivers of value by influencing neighbourhood attractiveness. These features are considered optional due to variability in availability and consistency across public data sources.
 
 These feature categories provide a structured starting point for feasibility assessment, with final feature selection contingent on data availability, coverage, and observed signal strength.
@@ -100,11 +100,11 @@ The initial analysis assumes reliance on free or publicly available datasets, wh
 
 #### Primary transaction and geographic data (WA)
 
-WA Sales Evidence Data — property transaction records including sale prices and attributes  
+- WA Sales Evidence Data — property transaction records including sale prices and attributes  
 https://catalogue.data.wa.gov.au/dataset/sales-evidence-data  
 Full access requires a licence and associated fees. Sample extracts in .dat and .xlsx formats are available for preliminary exploration.
 
-DataWA / SLIP spatial datasets — boundaries, regions, and geographic reference layers  
+- DataWA / SLIP spatial datasets — boundaries, regions, and geographic reference layers  
 https://catalogue.data.wa.gov.au/
 
 #### Socio-economic and macro context
