@@ -36,8 +36,8 @@ These scope choices are intended to reduce complexity during early exploration a
 ### 2.1 Common Modeling Approaches
 Residential housing price prediction is a well-studied applied problem, and industry practice typically favours robust, interpretable models over highly complex architectures. Common approaches can be broadly categorized as follows:
 *Hedonic regression models*
-Hedonic pricing models are traditional econometric approaches that express property price as a function of structural, locational, and neighbourhood attributes (e.g., dwelling size, number of rooms, location). They are widely used as interpretable baselines in real estate appraisal and automated valuation models (AVMs), particularly where transparency is required.
-Reference: https://en.wikipedia.org/wiki/Hedonic_regression
+Hedonic pricing models are traditional econometric approaches that express property price as a function of structural, locational, and neighbourhood attributes (e.g., dwelling size, number of rooms, location). They are widely used as interpretable baselines in real estate appraisal and automated valuation models (AVMs), particularly where transparency is required.  
+Reference: https://en.wikipedia.org/wiki/Hedonic_regression  
 A Development of hedonic models of rents and sales prices for housing on github: https://github.com/ual/hedonic-models
 
 *Tree-based ensemble models*
