@@ -78,19 +78,19 @@ Across studies and applied systems, feature quality and spatial representation t
 ### 3.1 Core Feature Categories
 Based on prior housing price modelling work, the following high-level feature categories are expected to explain the majority of observed price variation. These categories reflect commonly accepted economic drivers of residential property value and are intended to guide early exploration rather than define a fixed or exhaustive feature set.
 
-#### *Location features*  
+- Location features  
 Location is typically the single strongest determinant of housing prices. Features such as suburb or postcode identifiers, geographic coordinates, or region-level indicators act as proxies for a wide range of latent factors, including neighbourhood desirability, access to employment, and local demand–supply dynamics.
 
-#### *Property attributes*  
+- Property attributes  
 Structural characteristics describe the intrinsic qualities of a dwelling and are essential for differentiating prices within the same location. Attributes such as dwelling type, number of bedrooms and bathrooms, land size, internal area, and tenure type directly influence perceived utility and market value.
 
-#### *Temporal features*  
+- Temporal features  
 Housing prices evolve over time in response to market cycles, policy changes, and macroeconomic conditions. Transaction dates or coarse temporal indicators (e.g. year or quarter) help capture these dynamics and reduce bias arising from pooling transactions across different market phases.
 
-#### *Socio-economic context*  
+- Socio-economic context  
 Area-level socio-economic indicators provide context for local purchasing power and demand conditions. Features such as income levels, population density, tenure mix, and housing affordability metrics help explain systematic price differences across regions that are not fully captured by property attributes alone.
 
-#### *Optional amenity indicators*  
+- Optional amenity indicators  
 Where data coverage and quality permit, proximity to amenities such as schools, transport, or services can act as secondary drivers of value by influencing neighbourhood attractiveness. These features are considered optional due to variability in availability and consistency across public data sources.
 
 These feature categories provide a structured starting point for feasibility assessment, with final feature selection contingent on data availability, coverage, and observed signal strength.
@@ -109,10 +109,10 @@ https://catalogue.data.wa.gov.au/
 
 #### Socio-economic and macro context
 
-ABS Census and housing statistics — income, population, dwelling characteristics  
+- ABS Census and housing statistics — income, population, dwelling characteristics  
 https://www.abs.gov.au/
 
-Western Australia Regional Price Index (RPI) — region-level cost-of-living comparisons  
+- Western Australia Regional Price Index (RPI) — region-level cost-of-living comparisons  
 https://catalogue.data.wa.gov.au/dataset/regional-price-index-western-australia  
 Suitable for regional macro-context analysis, not transaction-level inputs.
 
@@ -120,16 +120,16 @@ Suitable for regional macro-context analysis, not transaction-level inputs.
 
 The following datasets are not WA-specific and are not intended for direct production use, but are commonly used for benchmarking, validation, or methodological exploration:
 
-UK Property Price Paid Data — Large, fully open dataset of residential transactions in England and Wales, often used in academic and ML baseline studies.  
+- UK Property Price Paid Data — Large, fully open dataset of residential transactions in England and Wales, often used in academic and ML baseline studies.  
 https://clickhouse.com/docs/getting-started/example-datasets/uk-price-paid  
 Constraint: Geography and market dynamics differ significantly from WA, so this is better suited for method testing than direct model transfer.
 
-International Residential Property Price Indices (BIS)  
+- International Residential Property Price Indices (BIS)  
 Quarterly price indices across multiple countries.  
 https://data.bis.org/topics/RPP  
 Constraint: Highly aggregated, making it useful for macro trend comparison or validation, but not for property-level prediction.
 
-Multimodal Houses Dataset (images + text)  
+- Multimodal Houses Dataset (images + text)  
 Small research dataset (~2k properties) with images and textual metadata.  
 https://github.com/emanhamed/Houses-dataset  
 Constraint: Limited in scale and not representative of the WA market, making it suitable only for experimental exploration of multimodal or deep learning methods.
@@ -160,7 +160,7 @@ Finally, reliance on free or open datasets introduces inherent noise and potenti
 
 ---
 
-## 6. Baseline & Evaluation Strategy (Conceptual)
+## 6. Baseline & Evaluation Strategy
 To ground early results and avoid overfitting to model complexity, a small number of simple baselines will be used as reference points.  
 - **Baseline reference:**
 Suburb- or postcode-level median sale prices, potentially stratified by basic property attributes (e.g. dwelling type), to establish a non-ML benchmark.
@@ -187,6 +187,6 @@ The project should be reconsidered or halted if analysis reveals **severe missin
 
 ## 8. Summary & Next-Step Options
 
-This assessment indicates that applying machine learning to residential housing price prediction in Western Australia may be feasible, subject to the availability, quality, and coverage of publicly accessible data. Feasibility at this stage should be regarded as conditional, with outcomes primarily constrained by data characteristics rather than modelling techniques.
+This report indicates that applying machine learning to residential housing price prediction in Western Australia may be feasible, subject to the availability, quality, and coverage of publicly accessible data. Feasibility at this stage should be regarded as conditional, with outcomes primarily constrained by data characteristics rather than modelling techniques.
 
 If initial feasibility is confirmed through further validation, reasonable next steps would include a **focused data audit** to verify key assumptions, followed by a small-scale proof of concept **(PoC)** to assess signal quality and baseline performance. Based on those findings, **scope refinement** with relevant stakeholders would be required to align expectations, define acceptable coverage, and determine whether further investment is justified.
