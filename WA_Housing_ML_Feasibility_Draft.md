@@ -95,15 +95,14 @@ e.g. proximity to schools, transport, or services, where coverage and quality pe
 
 These categories are intended to guide early exploration rather than define a fixed or exhaustive feature set.
 
-### 3.2 Potential Free Data Sources (Indicative)
+### 3.2 Potential Free Data Sources
 The initial analysis assumes reliance on free or publicly available datasets, which may include the following.
 
 #### Primary transaction and geographic data (WA)
 
 WA Sales Evidence Data — property transaction records including sale prices and attributes  
-https://catalogue.data.wa.gov.au/dataset/sales-evidence-data
-
-Note: full access is subject to licensing/fees; sample extracts in formats such as .dat or .xlsx can be used for early exploration.
+https://catalogue.data.wa.gov.au/dataset/sales-evidence-data  
+Full access requires a licence and associated fees. Sample extracts in .dat and .xlsx formats are available for preliminary exploration.
 
 DataWA / SLIP spatial datasets — boundaries, regions, and geographic reference layers  
 https://catalogue.data.wa.gov.au/
@@ -114,30 +113,26 @@ ABS Census and housing statistics — income, population, dwelling characteristi
 https://www.abs.gov.au/
 
 Western Australia Regional Price Index (RPI) — region-level cost-of-living comparisons  
-https://catalogue.data.wa.gov.au/dataset/regional-price-index-western-australia
+https://catalogue.data.wa.gov.au/dataset/regional-price-index-western-australia  
+Suitable for regional macro-context analysis, not transaction-level inputs.
 
-Useful as a regional macro context feature, not as transaction-level input.
-#### Broader / Comparative Datasets (Benchmarking & Methods)
+#### Broader / Comparative Datasets (Benchmarking)
 
 The following datasets are not WA-specific and are not intended for direct production use, but are commonly used for benchmarking, validation, or methodological exploration:
 
-UK Property Price Paid Data  
-Large, fully open dataset of residential transactions in England and Wales, often used in academic and ML baseline studies.  
-https://clickhouse.com/docs/getting-started/example-datasets/uk-price-paid
-
-Constraint: Geography and market dynamics differ significantly from WA. Might be suitable for method testing only, not model transfer.
+UK Property Price Paid Data — Large, fully open dataset of residential transactions in England and Wales, often used in academic and ML baseline studies.  
+https://clickhouse.com/docs/getting-started/example-datasets/uk-price-paid  
+Constraint: Geography and market dynamics differ significantly from WA, so this is better suited for method testing than direct model transfer.
 
 International Residential Property Price Indices (BIS)  
 Quarterly price indices across multiple countries.  
-https://data.bis.org/topics/RPP
-
-Constraint: Highly aggregated. Useful for macro trend comparison or validation, not for property-level prediction.
+https://data.bis.org/topics/RPP  
+Constraint: Highly aggregated, making it useful for macro trend comparison or validation, but not for property-level prediction.
 
 Multimodal Houses Dataset (images + text)  
 Small research dataset (~2k properties) with images and textual metadata.  
-https://github.com/emanhamed/Houses-dataset
-
-Constraint: Limited scale and not representative of WA. Suitable only for experimental exploration of multimodal or deep learning approaches.
+https://github.com/emanhamed/Houses-dataset  
+Constraint: Limited in scale and not representative of the WA market, making it suitable only for experimental exploration of multimodal or deep learning methods.
 
 Note: For this exploratory phase, priority should be given to WA-specific transaction data (Sales Evidence Data samples) combined with ABS socio-economic context and regional macro indicators. Broader and international datasets are best used for method validation, baseline comparisons, or feasibility assessment, rather than as direct training data.
 Feature inclusion is contingent on data availability, geographic coverage, and data quality, and will be validated during data discovery before any modelling decisions are finalised.
@@ -155,57 +150,43 @@ Residential housing prices typically exhibit strong right-skewed distributions, 
 ---
 
 ## 5. Data Risks & Constraints
+The primary risks in applying machine learning to publicly accessible housing transaction data relate to **data completeness, consistency, and representativeness** rather than model capability. Key structural features—such as land size, dwelling attributes, or precise location identifiers—may be missing, inconsistently recorded, or defined differently across data sources, limiting their usefulness as reliable predictors.
 
-This is a critical lead section.
+At this stage, I have not yet conducted a detailed, hands-on audit of all available datasets. The observations outlined here are therefore based on common characteristics observed in comparable public housing datasets, rather than confirmed data profiling results. As such, these risks should be treated as **anticipated constraints** to be validated during any subsequent data exploration phase.
 
-Discuss risks such as:
-- missing or inconsistent key features,
-- spatial bias toward metro areas,
-- temporal drift in housing markets,
-- noise or inconsistencies in free datasets.
+Spatial bias is also expected, with metropolitan areas likely to dominate available records while regional and remote locations exhibit sparse coverage. This imbalance can lead to models that perform well in high-density urban markets but generalise poorly to lower-turnover regions. In addition, housing markets are subject to **temporal drift**, where changing macroeconomic conditions, interest rates, and policy interventions alter pricing dynamics over time, reducing the stability of patterns learned from historical data.
 
-End with a clear statement:
-> These risks directly constrain achievable model performance and reliability.
+Finally, reliance on free or open datasets introduces inherent noise and potential inconsistencies, including delayed updates, incomplete transactions, and mismatched definitions across sources. Together, these risks directly constrain achievable model performance and reliability, and must be carefully considered when interpreting results or assessing the feasibility of downstream applications.
 
 ---
 
 ## 6. Baseline & Evaluation Strategy (Conceptual)
+To ground early results and avoid overfitting to model complexity, a small number of simple baselines will be used as reference points.  
+- **Baseline reference:**
+Suburb- or postcode-level median sale prices, potentially stratified by basic property attributes (e.g. dwelling type), to establish a non-ML benchmark.
 
-Keep this light and non-technical.
+- **Candidate model family:**
+Tree-based regression models (e.g. gradient-boosted trees or random forests) are suitable for initial feasibility testing due to their strong performance on tabular data, ability to capture non-linear relationships, and relatively low feature engineering overhead.
 
-- Baseline reference (e.g., suburb-level median prices),
-- Candidate model family for feasibility testing (tree-based regression),
-- Evaluation metrics (e.g., MAE, RMSE).
+- **Evaluation metrics:**
+Model performance will be assessed using standard regression metrics such as Mean Absolute Error (MAE) and Root Mean Squared Error (RMSE), with interpretation focused on relative improvement over the baseline rather than absolute accuracy.
 
-No implementation detail.
+At this stage, the goal of evaluation is to assess signal strength and feasibility, not to optimise or productionise models.
 
 ---
 
 ## 7. Feasibility Signals & Stop Criteria
 
-This section supports decision-making.
-
 ### 7.1 Positive Feasibility Signals
-Examples:
-- sufficient transaction density per region,
-- availability of core structural features,
-- reasonable temporal coverage.
+The project would be considered technically feasible if exploratory analysis indicates **sufficient transaction density** across a meaningful subset of regions, allowing models to learn stable patterns rather than isolated cases. Availability of **core structural features** (e.g. basic dwelling attributes and coarse location identifiers) with acceptable completeness would further support feasibility. In addition, **reasonable temporal coverage** across multiple market phases would be required to mitigate the impact of short-term volatility and temporal bias.
 
 ### 7.2 Stop / No-Go Signals
-Examples:
-- severe missingness in location or size data,
-- inconsistent price definitions across sources,
-- insufficient coverage outside limited regions.
+The project should be reconsidered or halted if analysis reveals **severe missingness or inconsistency** in essential predictors such as location, dwelling size, or sale price. Similarly, **inconsistent price definitions or recording standards** across data sources would undermine model validity and comparability. Finally, if usable data coverage is largely confined to a small number of metropolitan areas, with insufficient representation elsewhere, model outputs would have limited generalisability and practical value.
 
 ---
 
 ## 8. Summary & Next-Step Options
 
-Close calmly and professionally:
-- Restate feasibility as conditional, not guaranteed.
-- Outline possible next steps *if* feasibility is confirmed:
-  - focused data audit,
-  - small-scale PoC,
-  - scope refinement with stakeholders.
+This assessment indicates that applying machine learning to residential housing price prediction in Western Australia may be feasible, subject to the availability, quality, and coverage of publicly accessible data. Feasibility at this stage should be regarded as conditional, with outcomes primarily constrained by data characteristics rather than modelling techniques.
 
-Avoid commitments or timelines.
+If initial feasibility is confirmed through further validation, reasonable next steps would include a **focused data audit** to verify key assumptions, followed by a small-scale proof of concept **(PoC)** to assess signal quality and baseline performance. Based on those findings, **scope refinement** with relevant stakeholders would be required to align expectations, define acceptable coverage, and determine whether further investment is justified.
