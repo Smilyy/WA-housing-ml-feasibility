@@ -21,11 +21,11 @@ The ML objective is to estimate residential property sale prices in Western Aust
 ### 1.3 Scope Decisions & Assumptions
 To keep the initial analysis tractable, the following scope decisions are assumed:
 
-Geography: analysis at suburb or postcode level, subject to data availability and coverage
+- Geography: analysis at suburb or postcode level, subject to data availability and coverage
 
-Time: transaction-date based modelling, with limited temporal aggregation
+- Time: transaction-date based modelling, with limited temporal aggregation
 
-Property type: residential properties only
+- Property type: residential properties only
 
 These scope choices are intended to reduce complexity during early exploration and may be adjusted as data constraints and project goals become clearer.
 
@@ -39,10 +39,10 @@ Residential housing price prediction is a well-studied applied problem, and indu
 #### *Hedonic regression models*  
 Hedonic pricing models are traditional econometric approaches that express property price as a function of structural, locational, and neighbourhood attributes (e.g., dwelling size, number of rooms, location). They are widely used as interpretable baselines in real estate appraisal and automated valuation models (AVMs), particularly where transparency is required.  
 Reference: https://en.wikipedia.org/wiki/Hedonic_regression  
-A Development of hedonic models of rents and sales prices for housing on github: https://github.com/ual/hedonic-models
+A GitHub repository developing hedonic models for housing rents and sale prices: https://github.com/ual/hedonic-models
 
 #### *Tree-based ensemble models*  
-Tree-based machine learning methods such as Random Forest and Gradient Boosting (including XGBoost and LightGBM) are commonly used in applied housing price prediction due to their strong performance on tabular data. These models capture nonlinear relationships and feature interactions with relatively modest feature engineering and are often competitive with more complex methods in practice.
+Tree-based machine learning methods such as Random Forest and Gradient Boosting (including XGBoost and LightGBM) are commonly used in applied housing price prediction due to their strong performance on tabular data. These models capture nonlinear relationships and feature interactions with relatively modest feature engineering and are often competitive with more complex methods in practice.  
 Reference: https://en.wikipedia.org/wiki/Gradient_boosting  
 XGBoost Github Repo: https://github.com/dmlc/xgboost  
 LightGBM Guthub Repo: https://github.com/microsoft/LightGBM
@@ -55,7 +55,7 @@ Reference: https://www.researchgate.net/publication/372080726_A_Literature_Revie
 Housing prices exhibit strong spatial autocorrelation, where nearby properties tend to have similar values. Spatial-aware approaches explicitly account for this dependency through techniques such as geographically weighted regression, spatial lag models, or the inclusion of spatial features and residual structures within ML pipelines. These methods are particularly relevant in dense urban markets but depend heavily on data quality and geographic coverage.  
 Reference: https://link.springer.com/article/10.1007/s11146-022-09915-y  
 A GWR Model Python library: https://github.com/mkordi/pygwr  
-A PyTorch implementation of the Geographically Neural Network Weighted Regression (GNNWR) and its extensions: https://github.com/zjuwss/gnnwr?utm_source=chatgpt.com
+A PyTorch implementation of the Geographically Neural Network Weighted Regression (GNNWR) and its extensions Github Repo: https://github.com/zjuwss/gnnwr?utm_source=chatgpt.com
 
 #### *Hybrid and ensemble approaches*  
 Some applied systems combine multiple models or feature representations, such as blending hedonic features with machine learning outputs or stacking multiple regressors. These hybrid approaches aim to improve robustness and stability rather than maximise raw predictive accuracy and are typically explored after simpler baselines are established.  
@@ -78,19 +78,19 @@ Across studies and applied systems, feature quality and spatial representation t
 ### 3.1 Core Feature Categories
 Based on prior housing price modelling work, the following high-level feature categories are expected to explain the majority of price variation:
 
-Location features
+- Location features  
 e.g. suburb or postcode identifiers, geographic coordinates, or region-level indicators.
 
-Property attributes
+- Property attributes  
 e.g. dwelling type, number of bedrooms/bathrooms, land size, internal area, tenure type.
 
-Temporal features
+- Temporal features  
 e.g. transaction date, year/quarter indicators to capture market cycles and trends.
 
-Socio-economic context
+- Socio-economic context  
 e.g. income levels, population density, tenure mix, housing affordability metrics at area level.
 
-Optional amenity indicators
+- Optional amenity indicators  
 e.g. proximity to schools, transport, or services, where coverage and quality permit.
 
 These categories are intended to guide early exploration rather than define a fixed or exhaustive feature set.
