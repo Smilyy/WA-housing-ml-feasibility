@@ -36,32 +36,32 @@ These scope choices are intended to reduce complexity during early exploration a
 ### 2.1 Common Modeling Approaches
 Residential housing price prediction is a well-studied applied problem, and industry practice typically favours robust, interpretable models over highly complex architectures. Common approaches can be broadly categorized as follows:
 
-*Hedonic regression models*  
+#### *Hedonic regression models*  
 Hedonic pricing models are traditional econometric approaches that express property price as a function of structural, locational, and neighbourhood attributes (e.g., dwelling size, number of rooms, location). They are widely used as interpretable baselines in real estate appraisal and automated valuation models (AVMs), particularly where transparency is required.  
 Reference: https://en.wikipedia.org/wiki/Hedonic_regression  
 A Development of hedonic models of rents and sales prices for housing on github: https://github.com/ual/hedonic-models
 
-*Tree-based ensemble models*  
+#### *Tree-based ensemble models*  
 Tree-based machine learning methods such as Random Forest and Gradient Boosting (including XGBoost and LightGBM) are commonly used in applied housing price prediction due to their strong performance on tabular data. These models capture nonlinear relationships and feature interactions with relatively modest feature engineering and are often competitive with more complex methods in practice.
 Reference: https://en.wikipedia.org/wiki/Gradient_boosting  
 XGBoost Github Repo: https://github.com/dmlc/xgboost  
 LightGBM Guthub Repo: https://github.com/microsoft/LightGBM
 
-*Additional machine learning baselines*  
+#### *Additional machine learning baselines*  
 Beyond tree-based ensembles, practitioners frequently evaluate simpler ML baselines such as linear regression variants, k-nearest neighbours (KNN), and support vector regression (SVR). These models are typically used during early experimentation to benchmark performance and understand data sensitivity rather than as final production choices.  
 Reference: https://www.researchgate.net/publication/372080726_A_Literature_Review_on_Using_Machine_Learning_Algorithm_to_Predict_House_Prices
 
-*Spatial-aware modelling approaches*  
+#### *Spatial-aware modelling approaches*  
 Housing prices exhibit strong spatial autocorrelation, where nearby properties tend to have similar values. Spatial-aware approaches explicitly account for this dependency through techniques such as geographically weighted regression, spatial lag models, or the inclusion of spatial features and residual structures within ML pipelines. These methods are particularly relevant in dense urban markets but depend heavily on data quality and geographic coverage.  
 Reference: https://link.springer.com/article/10.1007/s11146-022-09915-y  
 A GWR Model Python library: https://github.com/mkordi/pygwr  
 A PyTorch implementation of the Geographically Neural Network Weighted Regression (GNNWR) and its extensions: https://github.com/zjuwss/gnnwr?utm_source=chatgpt.com
 
-*Hybrid and ensemble approaches*  
+#### *Hybrid and ensemble approaches*  
 Some applied systems combine multiple models or feature representations, such as blending hedonic features with machine learning outputs or stacking multiple regressors. These hybrid approaches aim to improve robustness and stability rather than maximise raw predictive accuracy and are typically explored after simpler baselines are established.  
 Reference: [https://www.mdpi.com/2073-445X/11/3/334](https://www.mdpi.com/2073-445X/11/3/334)
 
-*Deep learning and multi-modal methods*  
+#### *Deep learning and multi-modal methods*  
 Deep learning approaches, including neural networks that incorporate images, text descriptions, or learned spatial embeddings, appear primarily in research settings or large-scale platforms with access to rich, high-volume data. In most industry-level tabular housing datasets—particularly when relying on free or public data—deep learning is often unnecessary and offers limited benefit relative to its complexity and interpretability cost.  
 Reference: https://arxiv.org/abs/2409.05335  
 A Multi-Modal Deep Learning Based Approach for House Price Prediction Github Repo: https://github.com/4P0N/mhpp?utm_source=chatgpt.com  
