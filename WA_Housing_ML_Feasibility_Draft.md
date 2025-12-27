@@ -1,8 +1,6 @@
 # WA Housing Price Prediction — ML Feasibility & Discovery Notes (Draft)
 
-> This document is an initial feasibility assessment.
-> It is intended to support early decision‑making and scoping,
-> not to define a final solution or production system.
+> This document is an initial feasibility assessment intended to support early decision‑making and scoping.
 
 ---
 
